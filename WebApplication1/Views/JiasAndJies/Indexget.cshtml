@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Indexget";
+}
+
+<br />
+<hr />
+@using (Html.BeginForm("Indexpost", "JiasAndJies", FormMethod.Post))
+{
+    <div align="center">
+        <table class="table-responsive">
+            <tr>
+                <td>
+                    <input type="text" name="JiaMi" placeholder="请输入您要加密的信息!" autocomplete="off" />
+                </td>
+                <td>
+                    <input type="submit" value="加密数据" name="JiaMiShuJu" />
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            @if (Session["jiami"].ToString().Equals("本次加密的数据不合法！"))
+            {
+                <tr><td>@Session["jiami"]</td></tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@Session["jiami"]</td>
+                    <td><a href="@Url.Action("IndexJie","JiasAndJies")"><h4 style="color:red">解密</h4></a></td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+
