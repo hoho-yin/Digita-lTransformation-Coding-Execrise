@@ -8,13 +8,13 @@ namespace WebApplication1.Controllers
 {
     public class JiasAndJiesController : Controller
     {
-        //显示
+        //Show
         // GET: JiasAndJies
         public ActionResult Index()
         {
             return View();
         }
-        //加密
+        //Encode
         public ActionResult Indexget()
         {
             return View();
@@ -27,22 +27,17 @@ namespace WebApplication1.Controllers
             string JiaMi = Convert.ToString(Request.Form["JiaMi"]);
             if (JiaMi.Trim().Length > 0)
             {
-                string password = "";
-                for (int i = 0; i < JiaMi.Length; i++)
-                {
-                    password = password + "*";
-                }
-                Session["jiami"] = "加密成功的数据:"+ password;
+                Session["jiami"] = "Encoded Data: "+ Guid.NewGuid().ToString(); ;
                 Session["jiemi"] = JiaMi;
-                return Content("<script>alert('加密成功！');window.open('" + Url.Action("Indexget", "JiasAndJies") + "', '_self')</script>");
+                return Content("<script>alert('Encode data successfully 😊');window.open('" + Url.Action("Indexget", "JiasAndJies") + "', '_self')</script>");
             }
             else
-                Session["jiami"] = "本次加密的数据不合法！";
-                return Content("<script>alert('加密的数据不合法！');window.open('" + Url.Action("Indexget", "JiasAndJies") + "', '_self')</script>");
+                Session["jiami"] = "Sorry. Unable to encode data";
+                return Content("<script>alert('Sorry. Unable to encode data');window.open('" + Url.Action("Indexget", "JiasAndJies") + "', '_self')</script>");
         }
 
 
-        //解密
+        //Decode
         // GET: JiasAndJies
         public ActionResult IndexJie()
         {
