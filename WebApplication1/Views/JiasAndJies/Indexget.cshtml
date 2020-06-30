@@ -14,18 +14,19 @@
                 <input type="text" name="JiaMi" placeholder="Please input your data" autocomplete="off" />
             </td>
             <td>
-                <input type="submit" value="Encode" name="JiaMiShuJu" />
+                <input type="submit" value="Encode data" name="JiaMiShuJu" />
             </td>
         </tr>
         <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
     </table>
-    @if (Session["jiami"].ToString().Equals("Sorry. Unable to encode data."))
+    @if (Session["jiami"].ToString().Equals("Sorry. Unable to encode"))
     {
        @Session["jiami"]
     }
     else
     {
         @Session["jiami"]
+        <br />
            <a href="@Url.Action("IndexJie","JiasAndJies")"><h4 style="color:red">Decode</h4></a>
         
     }
